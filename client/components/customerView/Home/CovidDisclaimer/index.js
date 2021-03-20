@@ -1,6 +1,6 @@
 import styles from "./CovidDisclaimer.module.scss";
-import recipeBg from "../../../public/assets/images/home/recipe-bg-25.png";
-import packingRosa from "../../../public/assets/images/home/packing-rosa.jpeg";
+import recipeBg from "../../../../public/assets/images/home/recipe-bg-25.png";
+import packingRosa from "../../../../public/assets/images/home/packing-rosa.jpeg";
 
 const CovidDisclaimer = () => {
   return (

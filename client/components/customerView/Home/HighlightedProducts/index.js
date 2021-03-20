@@ -1,5 +1,5 @@
 import styles from "./HighlightedProducts.module.scss";
-import recipeBg from "../../../public/assets/images/home/recipe-bg-25.png";
+import recipeBg from "../../../../public/assets/images/home/recipe-bg-25.png";
 
 const HighlightedProducts = () => {
   return (

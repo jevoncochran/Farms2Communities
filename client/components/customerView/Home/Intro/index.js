@@ -1,7 +1,7 @@
 import styles from "./Intro.module.scss";
-import vegBasket from "../../../public/assets/images/home/vegetable-basket.jpg";
-import packingGreens from "../../../public/assets/images/home/packing-greens.jpg";
-import ftcLogo from "../../../public/assets/images/home/farms-to-communities-logo-color.png";
+import vegBasket from "../../../../public/assets/images/home/vegetable-basket.jpg";
+import packingGreens from "../../../../public/assets/images/home/packing-greens.jpg";
+import ftcLogo from "../../../../public/assets/images/home/farms-to-communities-logo-color.png";
 
 const Intro = () => {
   return (

@@ -1,0 +1,31 @@
+.intro {
+  display: flex;
+  padding: 4% 14%;
+}
+
+.intro-text {
+  //   border: 1px dashed black;
+  width: 50%;
+  margin-right: 4%;
+
+  h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 4%;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-bottom: 4%;
+  }
+}
+
+.intro-images {
+  width: 40%;
+}
+
+.intro-images-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 4%;
+}
