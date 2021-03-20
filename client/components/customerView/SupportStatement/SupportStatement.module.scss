@@ -1,0 +1,23 @@
+.ss {
+  height: 40vh;
+  background: #59854d;
+  padding: 4% 14%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ss-header {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ss-text {
+  font-size: 2rem;
+
+  span {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
