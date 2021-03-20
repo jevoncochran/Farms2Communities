@@ -17,3 +17,7 @@ a {
   padding: 0;
   font-size: 62.5%;
 }
+
+img {
+  height: auto;
+}

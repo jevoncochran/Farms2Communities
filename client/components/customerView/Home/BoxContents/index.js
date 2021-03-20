@@ -1,6 +1,6 @@
 import styles from "./BoxContents.module.scss";
-import freshCabbage from "../../../public/assets/images/home/fresh-cabbage.jpg";
-import boxContents from "../../../public/assets/images/home/box-contents.jpg";
+import freshCabbage from "../../../../public/assets/images/home/fresh-cabbage.jpg";
+import boxContents from "../../../../public/assets/images/home/box-contents.jpg";
 import Grid from "@material-ui/core/Grid";
 import { produce } from "./produce";
 
