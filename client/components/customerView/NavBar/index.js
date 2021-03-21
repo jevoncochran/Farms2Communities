@@ -13,8 +13,12 @@ const NavBar = () => {
         <Link href="/about">
           <p className={styles["nav-page"]}>About</p>
         </Link>
-        <p className={styles["nav-page"]}>Contact</p>
-        <p className={styles["nav-page"]}>Donate</p>
+        <Link href="/contact">
+          <p className={styles["nav-page"]}>Contact</p>
+        </Link>
+        <Link href="/donate">
+          <p className={styles["nav-page"]}>Donate</p>
+        </Link>
       </div>
       <div className={styles["nav-language-cont"]}>
         <div className={styles["nav-language-div"]}>
