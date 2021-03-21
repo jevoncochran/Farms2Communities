@@ -2,8 +2,10 @@ import styles from "./NavBar.module.scss";
 import usFlag from "../../../public/assets/images/nav/united-states.png";
 import mexicoFlag from "../../../public/assets/images/nav/mexico.png";
 import Link from "next/link";
+import { connect } from "react-redux";
+import { setLanguage } from "../../../redux/actions";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div className={styles["nav"]}>
       <div className={styles["nav-pages-cont"]}>
@@ -19,13 +21,22 @@ const NavBar = () => {
         <Link href="/donate">
           <p className={styles["nav-page"]}>Donate</p>
         </Link>
+        <Link href="/signup">
+          <p className={styles["nav-page"]}>Sign Up</p>
+        </Link>
       </div>
       <div className={styles["nav-language-cont"]}>
-        <div className={styles["nav-language-div"]}>
+        <div
+          className={styles["nav-language-div"]}
+          onClick={() => props.setLanguage("en")}
+        >
           <img src={usFlag} alt="American flag" />
           <p>EN</p>
         </div>
-        <div className={styles["nav-language-div"]}>
+        <div
+          className={styles["nav-language-div"]}
+          onClick={() => props.setLanguage("es")}
+        >
           <img src={mexicoFlag} alt="Mexican flag" />
           <p>ES</p>
         </div>
@@ -34,4 +45,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default connect(null, { setLanguage })(NavBar);

@@ -2,8 +2,10 @@ import styles from "./Intro.module.scss";
 import vegBasket from "../../../../public/assets/images/home/vegetable-basket.jpg";
 import packingGreens from "../../../../public/assets/images/home/packing-greens.jpg";
 import ftcLogo from "../../../../public/assets/images/home/farms-to-communities-logo-color.png";
+import { text } from "./text";
+import { connect } from "react-redux";
 
-const Intro = () => {
+const Intro = (props) => {
   return (
     <div className={styles.intro}>
       <div
@@ -16,19 +18,9 @@ const Intro = () => {
       </div>
       <div className={styles["intro-bottom"]}>
         <div className={styles["intro-bottom-text"]}>
-          <h2>Fresh Fruits and Veggies delivered to your door!</h2>
-          <p>
-            FARMS to COMMUNITIES is a new CSA by Growing Together. We are
-            increasing food access by connecting families around Oakland with
-            one another, and with local farmers, to mutually support one
-            another.
-          </p>
-          <p>
-            Now, you can order a weekly home delivery of fruits and vegetables
-            (almost all organic, and locally grown) through our Community
-            Support Box or Mutual Aid Box. Read more about us and the story of
-            how this project came about here.
-          </p>
+          <h2>{text[props.language].heading}</h2>
+          <p>{text[props.language].paragraph1}</p>
+          <p>{text[props.language].paragraph2}</p>
         </div>
         <img
           src={packingGreens}
@@ -40,4 +32,10 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(Intro);

@@ -3,36 +3,34 @@ import freshCabbage from "../../../../public/assets/images/home/fresh-cabbage.jp
 import boxContents from "../../../../public/assets/images/home/box-contents.jpg";
 import Grid from "@material-ui/core/Grid";
 import { produce } from "./produce";
+import { text } from "./text";
+import { connect } from "react-redux";
 
-const BoxContents = () => {
+const BoxContents = (props) => {
   return (
     <div
       className={styles["box-contents"]}
       style={{ backgroundImage: `url(${freshCabbage})` }}
     >
       <div className={styles["box-contents-text-cont"]}>
-        <p className={styles["box-contents-text-large"]}>What’s In The Box:</p>
-        <p className={styles["box-contents-text"]}>
-          The image to the right is an example of what comes in a weekly box.
-          Each week varies in exact contents. Weekly orders weigh 12-15 pounds.
+        <p className={styles["box-contents-text-large"]}>
+          {text[props.language].headline}
         </p>
-        <p className={styles["box-contents-text"]}>
-          Winter 2021 orders may include:
-        </p>
+        <p className={styles["box-contents-text"]}>{text[props.language].p1}</p>
+        <p className={styles["box-contents-text"]}>{text[props.language].p2}</p>
         <Grid container>
           {produce.map((ele) => (
             <Grid key={ele} item xs={3}>
-              <p className={styles["box-contents-contents"]}>{ele}</p>
+              <p className={styles["box-contents-contents"]}>
+                {ele[props.language]}
+              </p>
             </Grid>
           ))}
         </Grid>
-        <p className={styles["box-contents-text"]}>
-          Almost all produce included is grown here in California, and sourced
-          from organic and sustainable farmers.
-        </p>
+        <p className={styles["box-contents-text"]}>{text[props.language].p3}</p>
         <div className={styles["box-contents-btn-cont"]}>
           <button className={styles["box-contents-btn"]}>
-            Sign up for weekly deliveries!
+            {text[props.language].btn}
           </button>
         </div>
       </div>
@@ -45,4 +43,10 @@ const BoxContents = () => {
   );
 };
 
-export default BoxContents;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(BoxContents);

@@ -1,21 +1,18 @@
 import styles from "./CovidDisclaimer.module.scss";
 import recipeBg from "../../../../public/assets/images/home/recipe-bg-25.png";
 import packingRosa from "../../../../public/assets/images/home/packing-rosa.jpeg";
+import { text } from "./text";
+import { connect } from "react-redux";
 
-const CovidDisclaimer = () => {
+const CovidDisclaimer = (props) => {
   return (
     <div className={styles.cd} style={{ backgroundImage: `url(${recipeBg})` }}>
       <div className={styles["cd-text-cont"]}>
-        <p className={styles["cd-text-header"]}>COVID Safety</p>
-        <p className={styles["cd-text"]}>
-          We’re following USDA recommended protocols in food handling and
-          packing. We are packing in OUSD’s commercial kitchens and outdoor
-          spaces, distancing, sanitizing often, and wearing masks for food
-          packing and delivery.
+        <p className={styles["cd-text-header"]}>
+          {text[props.language].headline}
         </p>
-        <p className={styles["cd-text"]}>
-          Thank you for being part of our community!
-        </p>
+        <p className={styles["cd-text"]}>{text[props.language].p1}</p>
+        <p className={styles["cd-text"]}>{text[props.language].p2} </p>
       </div>
       <img
         src={packingRosa}
@@ -26,4 +23,10 @@ const CovidDisclaimer = () => {
   );
 };
 
-export default CovidDisclaimer;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(CovidDisclaimer);

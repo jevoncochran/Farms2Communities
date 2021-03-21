@@ -1,0 +1,47 @@
+.signup {
+  height: 90vh;
+}
+
+.signup-header {
+  height: 20vh;
+  border-bottom: 1px solid #ebebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+.signup-header-text {
+  font-size: 5rem;
+  text-transform: capitalize;
+}
+
+.signup-baskets-cont {
+  //   border: 1px dashed black;
+  height: 70vh;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4% 14%;
+}
+
+.basket-card {
+  border: 1px solid #efefef;
+  height: 55vh;
+  width: 40%;
+
+  p {
+    font-size: 3rem;
+    margin-bottom: 2%;
+  }
+}
+
+.basket-card-img {
+  height: 70%;
+  width: 100%;
+  background-size: cover;
+}
+
+.basket-card-text-cont {
+  height: 30%;
+  padding: 4%;
+}
