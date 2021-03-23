@@ -1,0 +1,25 @@
+.checkout {
+  height: 90vh;
+}
+
+.checkout-header {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+.checkout-header-text {
+  font-size: 5rem;
+  text-transform: capitalize;
+}
+
+.checkout-content {
+  padding: 4% 14%;
+}
+
+.checkout-cust-info {
+  display: flex;
+  justify-content: space-between;
+}

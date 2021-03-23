@@ -1,0 +1,59 @@
+.donate {
+  height: 90vh;
+}
+
+.donate-header {
+  height: 20vh;
+  background-size: cover;
+  border-bottom: 1px solid #ebebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donate-header-text {
+  font-size: 5rem;
+  text-transform: capitalize;
+}
+
+.donate-content {
+  height: 70vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 4% 14%;
+
+  img {
+    width: 40%;
+  }
+}
+
+.donate-form {
+  //   border: 1px dashed black;
+  width: 55%;
+
+  select {
+    height: 6vh;
+    font-size: 2rem;
+    padding: 2%;
+  }
+
+  input {
+    height: 6vh;
+    font-size: 2rem;
+    padding: 2%;
+  }
+
+  button {
+    height: 6vh;
+    width: 25%;
+    font-size: 2rem;
+  }
+}
+
+.donate-text-large {
+  font-size: 2.5rem;
+}
+
+.donate-text {
+  font-size: 2rem;
+}
