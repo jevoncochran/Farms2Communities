@@ -1,0 +1,52 @@
+.pf {
+  //   border: 1px dashed black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  form {
+    width: 100%;
+    height: 85%;
+    padding: 4%;
+    background-color: #f6f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    p,
+    label,
+    input,
+    button {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.pf-label-cont {
+  //   margin-bottom: 4%;
+}
+
+.pf-input-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+
+  label {
+    margin-bottom: 1%;
+  }
+}
+
+.pf-input-div:last-of-type {
+  //   margin-bottom: 4%;
+}
+
+.pf-input {
+  height: 4vh;
+}
+
+.pf-btn {
+  width: 22%;
+  height: 5vh;
+  text-transform: uppercase;
+}

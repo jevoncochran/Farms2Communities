@@ -22,7 +22,7 @@ const NavBar = (props) => {
           <p className={styles["nav-page"]}>Donate</p>
         </Link>
         <Link href="/signup">
-          <p className={styles["nav-page"]}>Sign Up</p>
+          <p className={styles["nav-page"]}>SignUp</p>
         </Link>
       </div>
       <div className={styles["nav-language-cont"]}>

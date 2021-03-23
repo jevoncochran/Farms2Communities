@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@stripe/react-stripe-js": "^1.4.0",
+    "@stripe/stripe-js": "^1.13.2",
     "axios": "^0.21.1",
     "currencyformatter.js": "^2.2.0",
     "next": "10.0.9",
