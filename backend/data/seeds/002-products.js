@@ -26,9 +26,9 @@ exports.seed = function (knex) {
       description1:
         "Qualified families can receive a generous assortment of fresh fruits and vegetables from local organic and sustainable farms – delivered to your home. The standard price is $35. Enter the promo code that you were given via the email from OUSD – and sign up for weekly deliveries for just $10.",
     },
-    {
-      item: "Donation",
-    },
+    // {
+    //   item: "Donation",
+    // },
   ]);
   // });
 };
