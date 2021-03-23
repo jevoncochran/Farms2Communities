@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const authRouter = require("../auth/auth-router");
 const productRouter = require("../products/product-router");
+const customerRouter = require("../customers/customer-router");
 
 const server = express();
 
@@ -37,5 +38,6 @@ server.post("/api/pay", cors(), async (req, res) => {
 
 server.use("/api/auth", authRouter);
 server.use("/api/products", productRouter);
+server.use("/api/customers", customerRouter);
 
 module.exports = server;

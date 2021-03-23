@@ -1,0 +1,50 @@
+.pf {
+  border: 1px solid #e0dede;
+  width: 100%;
+  padding: 2%;
+
+  form {
+    width: 100%;
+    height: 85%;
+    // padding: 4%;
+    // background-color: #f6f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    p,
+    label,
+    input {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.pf-label-cont {
+  margin-bottom: 4%;
+}
+
+.pf-input-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+
+  label {
+    margin-bottom: 1%;
+  }
+}
+
+.pf-btn {
+  width: 30%;
+  height: 5vh;
+  background: linear-gradient(to top, #d6d6d6, #e8e8e8);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-top: 4%;
+}
+
+.CardField .CardField--ltr {
+  border: 2px solid #e0dede;
+}
