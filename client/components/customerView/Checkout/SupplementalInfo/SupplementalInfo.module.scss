@@ -1,5 +1,5 @@
 .si {
-  width: 48%;
+  width: 100%;
 
   form {
     width: 100%;
@@ -9,8 +9,7 @@
     margin-bottom: 4%;
 
     label,
-    input,
-    button {
+    input {
       font-size: 2rem;
     }
 
@@ -28,6 +27,7 @@
       background: linear-gradient(to top, #d6d6d6, #e8e8e8);
       border: none;
       border-radius: 6px;
+      font-size: 1.2rem;
     }
   }
 }

@@ -1,0 +1,81 @@
+.rap {
+  width: 100%;
+  border: 1px solid #e0dede;
+  padding: 2%;
+  margin-bottom: 4%;
+}
+
+.rap-header {
+  border-bottom: 1px solid #e0dede;
+  font-size: 3rem;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4%;
+}
+
+.rap-label-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4vh;
+  border-bottom: 1px solid #e0dede;
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+.rap-order-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  border-bottom: 1px solid #e0dede;
+  padding: 4% 0%;
+}
+
+.rap-product-div {
+  // border: 1px dashed black;
+  display: flex;
+  align-items: center;
+  width: 65%;
+  height: 100%;
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+.rap-product-img {
+  height: 100%;
+  width: 50%;
+  background-size: cover;
+  margin-right: 2%;
+}
+
+.rap-product-subtotal {
+  font-size: 2rem;
+}
+
+.rap-total-div {
+  display: flex;
+  justify-content: space-between;
+  // height: 10vh;
+  padding: 4% 0;
+
+  p {
+    font-size: 2rem;
+    margin-bottom: 1%;
+  }
+
+  .rap-charge-details-small {
+    font-size: 1.2rem;
+  }
+}
+
+.rap-charge-details {
+  p {
+    font-size: 2rem;
+  }
+}

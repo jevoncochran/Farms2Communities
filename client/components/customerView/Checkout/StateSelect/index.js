@@ -1,7 +1,10 @@
 export default function StateSelect(props) {
+  const selectChangeHandler = (e) => {
+    props.setCustomer({ ...props.customer, state: e.target.value });
+  };
   return (
     <div>
-      <select>
+      <select onChange={selectChangeHandler}>
         <option value="">Select State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
