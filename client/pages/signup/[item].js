@@ -23,3 +23,10 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(`${apiRoot}/products/${params.id}`);
+  const product = await res.json();
+
+  return { props: { product } };
+}
