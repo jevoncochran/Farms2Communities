@@ -18,6 +18,11 @@ const SignUp = (props) => {
   //     props.setSelectedProduct(product);
   //   };
 
+  const routeToSelectedProduct = (product) => {
+    props.setSelectedProduct(product);
+    // router.push(`/signup/${props.selectedProduct.route}`);
+  };
+
   useEffect(() => {
     axios
       .get(`${apiRoot}/products`)
@@ -58,7 +63,7 @@ const SignUp = (props) => {
               <div
                 key={basket.id}
                 className={styles["basket-card"]}
-                onClick={() => props.setSelectedProduct(basket)}
+                onClick={() => routeToSelectedProduct(basket)}
               >
                 <div
                   className={styles["basket-card-img"]}
