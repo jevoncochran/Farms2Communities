@@ -37,6 +37,8 @@ const Donate = () => {
     console.log("chooseAmount: ", chooseAmount);
   }, [amount, chooseAmount]);
 
+  
+
   return (
     <Layout>
       <div className={styles.donate}>
