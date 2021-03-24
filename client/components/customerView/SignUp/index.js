@@ -8,7 +8,6 @@ import CurrencyFormatter from "currencyformatter.js";
 import { connect } from "react-redux";
 import { setSelectedProduct } from "../../../redux/actions";
 import { useRouter } from "next/router";
-import { route } from "../../../../backend/api/server";
 
 const SignUp = (props) => {
   const router = useRouter();
@@ -19,9 +18,9 @@ const SignUp = (props) => {
   //     props.setSelectedProduct(product);
   //   };
 
-  const routeToSelectedProduct = async (product) => {
-    await props.setSelectedProduct(product);
-    router.push(`/signup/${props.selectedProduct.route}`);
+  const routeToSelectedProduct = (product) => {
+    props.setSelectedProduct(product);
+    // router.push(`/signup/${props.selectedProduct.route}`);
   };
 
   useEffect(() => {
@@ -41,11 +40,11 @@ const SignUp = (props) => {
     }
   }, [baskets]);
 
-  // useEffect(() => {
-  //   if (props.selectedProduct) {
-  //     router.push(`/signup/${props.selectedProduct.route}`);
-  //   }
-  // }, [props.selectedProduct]);
+  useEffect(() => {
+    if (props.selectedProduct) {
+      router.push(`/signup/${props.selectedProduct.route}`);
+    }
+  }, [props.selectedProduct]);
 
   return (
     <Layout>
