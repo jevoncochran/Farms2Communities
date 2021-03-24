@@ -8,6 +8,7 @@ import CurrencyFormatter from "currencyformatter.js";
 import { connect } from "react-redux";
 import { setSelectedProduct } from "../../../redux/actions";
 import { useRouter } from "next/router";
+import { route } from "../../../../backend/api/server";
 
 const SignUp = (props) => {
   const router = useRouter();
@@ -17,6 +18,11 @@ const SignUp = (props) => {
   //   const chooseProduct = (product) => {
   //     props.setSelectedProduct(product);
   //   };
+
+  const routeToSelectedProduct = async (product) => {
+    await props.setSelectedProduct(product);
+    router.push(`/signup/${props.selectedProduct.route}`);
+  };
 
   useEffect(() => {
     axios
@@ -35,11 +41,11 @@ const SignUp = (props) => {
     }
   }, [baskets]);
 
-  useEffect(() => {
-    if (props.selectedProduct) {
-      router.push(`/signup/${props.selectedProduct.route}`);
-    }
-  }, [props.selectedProduct]);
+  // useEffect(() => {
+  //   if (props.selectedProduct) {
+  //     router.push(`/signup/${props.selectedProduct.route}`);
+  //   }
+  // }, [props.selectedProduct]);
 
   return (
     <Layout>
@@ -58,7 +64,7 @@ const SignUp = (props) => {
               <div
                 key={basket.id}
                 className={styles["basket-card"]}
-                onClick={() => props.setSelectedProduct(basket)}
+                onClick={() => routeToSelectedProduct(basket)}
               >
                 <div
                   className={styles["basket-card-img"]}
