@@ -5,8 +5,9 @@ import StripeContainer from "./StripeContainer";
 import recipeBg from "../../../public/assets/images/home/recipe-bg-25.png";
 import produceHeart from "../../../public/assets/images/donate/produce-heart.jpg";
 import CurrencyFormatter from "currencyformatter.js";
+import { connect } from "react-redux";
 
-const Donate = () => {
+const Donate = (props) => {
   const [amount, setAmount] = useState(null);
   const [chooseAmount, setChooseAmount] = useState(false);
   const [showAmountForm, setShowAmountForm] = useState(true);
@@ -37,8 +38,6 @@ const Donate = () => {
     console.log("chooseAmount: ", chooseAmount);
   }, [amount, chooseAmount]);
 
-  
-
   return (
     <Layout>
       <div className={styles.donate}>
@@ -46,7 +45,9 @@ const Donate = () => {
           className={styles["donate-header"]}
           style={{ backgroundImage: `url(${recipeBg})` }}
         >
-          <p className={styles["donate-header-text"]}>Donate</p>
+          <p className={styles["donate-header-text"]}>
+            {props.language === "en" ? "Donate" : "Donar"}
+          </p>
         </div>
         <div className={styles["donate-content"]}>
           <img src={produceHeart} alt="produce heart" />
@@ -56,7 +57,9 @@ const Donate = () => {
                 className={styles["donate-text-large"]}
                 style={{ marginBottom: "6%" }}
               >
-                Donate To Families in Need
+                {props.language === "en"
+                  ? "Donate To Families in Need"
+                  : "Done para familias necesitadas"}
               </p>
               <div
                 style={{
@@ -70,15 +73,25 @@ const Donate = () => {
                   className={styles["donate-text"]}
                   style={{ marginRight: "20%" }}
                 >
-                  Preset Donations
+                  {props.language === "en"
+                    ? "Preset Donations"
+                    : "Donaciones preestablecidas"}
                 </label>
                 <select name="preset_donations" onChange={selectChangeHandler}>
-                  <option>Choose an option</option>
+                  <option>
+                    {props.language === "en"
+                      ? "Choose an option"
+                      : "Escoge una opción"}
+                  </option>
                   <option value={25}>$25</option>
                   <option value={50}>$50</option>
                   <option value={100}>$100</option>
                   <option value={200}>$200</option>
-                  <option value="choose">Choose your own amount</option>
+                  <option value="choose">
+                    {props.language === "en"
+                      ? "Choose your own amount"
+                      : "Escoge otra cantidad"}
+                  </option>
                 </select>
               </div>
               {chooseAmount && (
@@ -94,7 +107,9 @@ const Donate = () => {
                     className={styles["donate-text"]}
                     style={{ marginBottom: "1%" }}
                   >
-                    Choose your own donation amount
+                    {props.language === "en"
+                      ? "Choose your own donation amount"
+                      : "Escoge otra cantidad"}
                   </label>
                   <input
                     type="text"
@@ -109,7 +124,9 @@ const Donate = () => {
                   />
                 </div>
               )}
-              <button onClick={renderPaymentForm}>DONATE NOW!</button>
+              <button onClick={renderPaymentForm}>
+                {props.language === "en" ? "DONATE NOW!" : "¡DONE AHORA!"}
+              </button>
             </form>
           )}
           {showPaymentForm && <StripeContainer amount={amount} />}
@@ -119,4 +136,10 @@ const Donate = () => {
   );
 };
 
-export default Donate;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(Donate);

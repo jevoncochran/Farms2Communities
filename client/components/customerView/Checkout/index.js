@@ -6,7 +6,7 @@ import SupplementalInfo from "./SupplementalInfo";
 import recipeBg from "../../../public/assets/images/home/recipe-bg-25.png";
 import RecapAndPayment from "./RecapAndPayment";
 import StripeContainer from "./StripeContainer";
-import { join } from "path";
+import { connect } from "react-redux";
 
 const Checkout = () => {
   const [customer, setCustomer] = useState({
@@ -22,7 +22,12 @@ const Checkout = () => {
     password: "",
   });
 
+  const [promoCode, setPromoCode] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
+
   const [addressLine2, setAddressLine2] = useState("");
+
+  const [displayErrMsg, setDisplayErrMsg] = useState(false);
 
   useEffect(() => {
     console.log("customer: ", customer);
@@ -31,6 +36,10 @@ const Checkout = () => {
   useEffect(() => {
     console.log("addressLine2: ", addressLine2);
   }, [addressLine2]);
+
+  useEffect(() => {
+    console.log("errorMsg: ", errorMsg);
+  }, [errorMsg]);
 
   return (
     <Layout>
@@ -50,19 +59,37 @@ const Checkout = () => {
               setAddressLine2={setAddressLine2}
             />
             <div className={styles["checkout-cust-info-right"]}>
-              <SupplementalInfo />
+              <SupplementalInfo
+                promoCode={promoCode}
+                setPromoCode={setPromoCode}
+              />
               <RecapAndPayment />
               <StripeContainer
                 customer={customer}
                 setCustomer={setCustomer}
                 addressLine2={addressLine2}
+                promoCode={promoCode}
+                // errorMsg={errorMsg}
+                setErrorMsg={setErrorMsg}
+                setDisplayErrMsg={setDisplayErrMsg}
               />
             </div>
           </div>
         </div>
       </div>
+      {displayErrMsg && (
+        <div className={styles["checkout-error-msg"]}>
+          <p>{errorMsg}</p>
+        </div>
+      )}
     </Layout>
   );
 };
 
-export default Checkout;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(Checkout);

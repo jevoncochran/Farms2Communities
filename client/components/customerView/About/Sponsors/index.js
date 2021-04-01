@@ -1,12 +1,15 @@
 import styles from "./Sponsors.module.scss";
 import Grid from "@material-ui/core/Grid";
 import { sponsorLogos } from "./sponsorLogos";
+import { connect } from "react-redux";
 
-const Sponsors = () => {
+const Sponsors = (props) => {
   return (
     <div className={styles.sponsors}>
       <p className={styles["sponsors-headline"]}>
-        Thank You to our Sponsors and Partners
+        {props.language === "en"
+          ? "Thank You to our Sponsors and Partners"
+          : "Gracias a nuestros patrocinadores y socios"}
       </p>
       <div className={styles["sponsor-logo-cont"]}>
         <Grid container>
@@ -27,4 +30,10 @@ const Sponsors = () => {
   );
 };
 
-export default Sponsors;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(Sponsors);

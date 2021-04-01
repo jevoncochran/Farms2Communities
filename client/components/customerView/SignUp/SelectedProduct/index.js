@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SelectedProduct.module.scss";
 import Layout from "../../Layout";
 import recipeBg from "../../../../public/assets/images/home/recipe-bg-25.png";
 import CurrencyFormatter from "currencyformatter.js";
-import { connect } from "react-redux";
 import { useRouter } from "next/router";
+import { connect } from "react-redux";
+import { setProductQuantity } from "../../../../redux/actions";
 
 const SelectedProduct = (props) => {
   const router = useRouter();
@@ -26,6 +27,10 @@ const SelectedProduct = (props) => {
     router.push("/checkout");
   };
 
+  useEffect(() => {
+    props.setProductQuantity(quantity);
+  }, [quantity]);
+
   return (
     <Layout>
       <div className={styles.sp}>
@@ -34,7 +39,9 @@ const SelectedProduct = (props) => {
           style={{ backgroundImage: `url(${recipeBg})` }}
         >
           <p className={styles["sp-header-text"]}>
-            {props.selectedProduct.item}
+            {props.language === "en"
+              ? props.selectedProduct.item
+              : props.selectedProduct.item_es}
           </p>
         </div>
         <div className={styles["sp-content"]}>
@@ -49,7 +56,9 @@ const SelectedProduct = (props) => {
               className={styles["sp-text-large"]}
               style={{ marginBottom: "2%" }}
             >
-              {props.selectedProduct.summary}
+              {props.language === "en"
+                ? props.selectedProduct.summary
+                : props.selectedProduct.summary_es}
             </p>
             <p className={styles["sp-text"]} style={{ marginBottom: "4%" }}>
               {`${CurrencyFormatter.format(props.selectedProduct.price, {
@@ -57,10 +66,14 @@ const SelectedProduct = (props) => {
               })}/week`}
             </p>
             <p className={styles["sp-text"]}>
-              {props.selectedProduct.description1}
+              {props.language === "en"
+                ? props.selectedProduct.description1
+                : props.selectedProduct.description1_es}
             </p>
             <p className={styles["sp-text"]}>
-              {props.selectedProduct.description2}
+              {props.language === "en"
+                ? props.selectedProduct.description2
+                : props.selectedProduct.description2_es}
             </p>
             <div className={styles["sp-btn-cont"]}>
               <div className={styles["sp-quantity-cont"]}>
@@ -84,7 +97,7 @@ const SelectedProduct = (props) => {
                 className={styles["sp-signup-btn"]}
                 onClick={proceedToCheckout}
               >
-                Sign up now
+                {props.language === "en" ? "Sign up now" : "REGISTRESE AHORA"}
               </button>
             </div>
           </div>
@@ -97,7 +110,10 @@ const SelectedProduct = (props) => {
 const mapStateToProps = (state) => {
   return {
     selectedProduct: state.customer.selectedProduct,
+    language: state.customer.language,
   };
 };
 
-export default connect(mapStateToProps, {})(SelectedProduct);
+export default connect(mapStateToProps, { setProductQuantity })(
+  SelectedProduct
+);

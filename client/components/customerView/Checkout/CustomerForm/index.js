@@ -1,5 +1,6 @@
 import styles from "./CustomerForm.module.scss";
 import StateSelect from "../StateSelect";
+import { connect } from "react-redux";
 
 const CustomerForm = (props) => {
   const inputChangeHandler = (e) => {
@@ -24,11 +25,15 @@ const CustomerForm = (props) => {
   };
   return (
     <div className={styles.cf}>
-      <div className={styles["cf-header"]}>Customer Details</div>
+      <div className={styles["cf-header"]}>
+        {props.language === "en" ? "Customer Details" : "Detalles del cliente"}
+      </div>
       <form className={styles["cf-form"]}>
         <div>
           <div className={styles["cf-input-div"]}>
-            <label htmlFor="first_name">First name</label>
+            <label htmlFor="first_name">
+              {props.language === "en" ? "First name" : "Nombre"}
+            </label>
             <input
               name="first_name"
               type="text"
@@ -36,16 +41,22 @@ const CustomerForm = (props) => {
             />
           </div>
           <div className={styles["cf-input-div"]}>
-            <label htmlFor="last_name">Last name</label>
+            <label htmlFor="last_name">
+              {props.language === "en" ? "Last name" : "Apellido"}
+            </label>
             <input name="last_name" type="text" onChange={inputChangeHandler} />
           </div>
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="company">Company</label>
+          <label htmlFor="company">
+            {props.language === "en" ? "Company" : "Empresa"}
+          </label>
           <input name="company" type="text" onChange={inputChangeHandler} />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="address">Street Address</label>
+          <label htmlFor="address">
+            {props.language === "en" ? "Street Address" : "Dirección"}
+          </label>
           <input
             name="address_line1"
             type="text"
@@ -58,30 +69,44 @@ const CustomerForm = (props) => {
           />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">
+            {props.language === "en" ? "City" : "Ciudad"}
+          </label>
           <input name="city" type="text" onChange={inputChangeHandler} />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="state">State</label>
+          <label htmlFor="state">
+            {props.language === "en" ? "State" : "Estado"}
+          </label>
           <StateSelect
             customer={props.customer}
             setCustomer={props.setCustomer}
           />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="zip">Zip</label>
+          <label htmlFor="zip">
+            {props.language === "en" ? "Zip" : "Código postal"}
+          </label>
           <input name="zip" type="text" onChange={inputChangeHandler} />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="phone">Phone</label>
+          <label htmlFor="phone">
+            {props.language === "en" ? "Phone" : "Teléfono"}
+          </label>
           <input name="phone" type="text" onChange={inputChangeHandler} />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="email">
+            {props.language === "en" ? "Email Address" : "Correo electrónico"}
+          </label>
           <input name="email" type="text" onChange={inputChangeHandler} />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="password">Create Account Password</label>
+          <label htmlFor="password">
+            {props.language === "en"
+              ? "Create Account Password"
+              : "Crear seña para su cuenta"}
+          </label>
           <input
             name="password"
             type="password"
@@ -89,7 +114,9 @@ const CustomerForm = (props) => {
           />
         </div>
         <div className={styles["cf-input-div"]}>
-          <label htmlFor="password_confirm">Confirm Password</label>
+          <label htmlFor="password_confirm">
+            {props.language === "en" ? "Confirm Password" : "Confirmar seña"}
+          </label>
           <input name="password_confirm" type="password" />
         </div>
       </form>
@@ -97,4 +124,10 @@ const CustomerForm = (props) => {
   );
 };
 
-export default CustomerForm;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(CustomerForm);
