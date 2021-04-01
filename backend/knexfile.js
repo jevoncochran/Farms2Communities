@@ -40,6 +40,7 @@ module.exports = {
     client: "pg",
     connection: {
       database: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
