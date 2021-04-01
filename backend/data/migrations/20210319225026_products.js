@@ -4,7 +4,11 @@ exports.up = function (knex) {
 
     tbl.string("item", 255).notNullable();
 
+    tbl.string("item_es", 255).notNullable();
+
     tbl.string("summary", 255);
+
+    tbl.string("summary_es", 255);
 
     tbl.decimal("price", null);
 
@@ -12,9 +16,13 @@ exports.up = function (knex) {
 
     tbl.string("route", 30);
 
-    tbl.string("description1", 22);
+    tbl.string("description1");
+
+    tbl.string("description1_es");
 
     tbl.string("description2");
+
+    tbl.string("description2_es");
   });
 };
 

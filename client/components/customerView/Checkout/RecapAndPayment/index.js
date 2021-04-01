@@ -1,6 +1,8 @@
 import styles from "./RecapAndPayment.module.scss";
+import CurrencyFormatter from "currencyformatter.js";
+import { connect } from "react-redux";
 
-const RecapAndPayment = () => {
+const RecapAndPayment = (props) => {
   return (
     <div className={styles.rap}>
       <div className={styles["rap-header"]}>Your Order</div>
@@ -13,17 +15,27 @@ const RecapAndPayment = () => {
           <div
             className={styles["rap-product-img"]}
             style={{
-              backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/farms2communities.appspot.com/o/images%2Fbox-option1.jpg?alt=media&token=bae8c79b-89ab-42b2-9637-3f7dd9b48e6a)`,
+              backgroundImage: `url(${props.selectedProduct.main_image})`,
             }}
           ></div>
-          <p>Community Support Box x 2</p>
+          <p>
+            {props.selectedProduct.item} x {props.selectedProduct.quantity}
+          </p>
         </div>
-        <p className={styles["rap-product-subtotal"]}>$70.00 / week</p>
+        <p
+          className={styles["rap-product-subtotal"]}
+        >{`${CurrencyFormatter.format(
+          props.selectedProduct.price * props.selectedProduct.quantity,
+          { currency: "USD" }
+        )} / week`}</p>
       </div>
       <div className={styles["rap-total-div"]}>
         <p>Recurring total</p>
         <div className={styles["rap-charge-details"]}>
-          <p>$70.00 / week</p>
+          <p>{`${CurrencyFormatter.format(
+            props.selectedProduct.price * props.selectedProduct.quantity,
+            { currency: "USD" }
+          )}`}</p>
           <p className={styles["rap-charge-details-small"]}>
             First renewal: March 29, 2021
           </p>
@@ -33,4 +45,10 @@ const RecapAndPayment = () => {
   );
 };
 
-export default RecapAndPayment;
+const mapStateToProps = (state) => {
+  return {
+    selectedProduct: state.customer.selectedProduct,
+  };
+};
+
+export default connect(mapStateToProps, {})(RecapAndPayment);

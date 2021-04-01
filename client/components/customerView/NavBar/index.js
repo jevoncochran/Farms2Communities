@@ -21,9 +21,21 @@ const NavBar = (props) => {
         <Link href="/donate">
           <p className={styles["nav-page"]}>Donate</p>
         </Link>
-        <Link href="/signup">
-          <p className={styles["nav-page"]}>SignUp</p>
-        </Link>
+        {!props.loggedIn && (
+          <Link href="/login">
+            <p className={styles["nav-page"]}>LOGIN</p>
+          </Link>
+        )}
+        {!props.loggedIn && (
+          <Link href="/signup">
+            <p className={styles["nav-page"]}>SignUp</p>
+          </Link>
+        )}
+        {props.loggedIn && (
+          <Link href="/">
+            <p className={styles["nav-page"]}>Logout</p>
+          </Link>
+        )}
       </div>
       <div className={styles["nav-language-cont"]}>
         <div
@@ -45,4 +57,10 @@ const NavBar = (props) => {
   );
 };
 
-export default connect(null, { setLanguage })(NavBar);
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.customer.loggedIn,
+  };
+};
+
+export default connect(mapStateToProps, { setLanguage })(NavBar);

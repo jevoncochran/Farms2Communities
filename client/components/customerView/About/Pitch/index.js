@@ -4,21 +4,24 @@ import paloma from "../../../../public/assets/images/about/paloma.jpg";
 import smilingWithStrawberries from "../../../../public/assets/images/about/smiling-with-strawberries.jpg";
 import kidsWithBeans from "../../../../public/assets/images/about/kids-with-beans.jpeg";
 import eatingApples from "../../../../public/assets/images/about/eating-apples.jpeg";
+import { text } from "./text";
+import { connect } from "react-redux";
 
-const Pitch = () => {
+const Pitch = (props) => {
   return (
     <div
       className={styles.pitch}
       style={{ backgroundImage: `url(${recipeBg})` }}
     >
       <div className={styles["pitch-text-cont"]}>
-        <p className={styles["pitch-text-large"]}>Join FARMS to COMMUNITIES</p>
-        <p className={styles["pitch-text"]}>
-          Start receiving farm fresh fruits and vegetables – delivered to your
-          door – and help your community at the same time!
+        <p className={styles["pitch-text-large"]}>
+          {text[props.language].header}
         </p>
-        <button className={styles["pitch-text-btn"]}>JOIN TODAY</button>
-        <p className={styles["pitch-text"]}>Thank you!</p>
+        <p className={styles["pitch-text"]}>{text[props.language].p1}</p>
+        <button className={styles["pitch-text-btn"]}>
+          {text[props.language].button}
+        </button>
+        <p className={styles["pitch-text"]}>{text[props.language].p2}</p>
       </div>
       <div className={styles["pitch-img-cont"]}>
         <img
@@ -46,4 +49,10 @@ const Pitch = () => {
   );
 };
 
-export default Pitch;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(Pitch);

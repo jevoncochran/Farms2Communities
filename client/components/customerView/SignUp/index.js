@@ -14,12 +14,14 @@ const SignUp = (props) => {
   const [baskets, setBaskets] = useState(null);
   const [filteredBaskets, setFilteredBaskets] = useState(null);
 
+  const en = props.language === "en";
+
   //   const chooseProduct = (product) => {
   //     props.setSelectedProduct(product);
   //   };
 
-  const routeToSelectedProduct = (product) => {
-    props.setSelectedProduct(product);
+  const routeToSelectedProduct = async (product) => {
+    await props.setSelectedProduct(product);
     // router.push(`/signup/${props.selectedProduct.route}`);
   };
 
@@ -54,7 +56,9 @@ const SignUp = (props) => {
           style={{ backgroundImage: `url(${recipeBg})` }}
         >
           <p className={styles["signup-header-text"]}>
-            Sign up for produce delivery
+            {props.language === "en"
+              ? "Sign up for produce delivery"
+              : "Regístrese para la entrega de productos agrícolas frescos"}
           </p>
         </div>
         <div className={styles["signup-baskets-cont"]}>
@@ -70,8 +74,14 @@ const SignUp = (props) => {
                   style={{ backgroundImage: `url(${basket.main_image})` }}
                 ></div>
                 <div className={styles["basket-card-text-cont"]}>
-                  <p>{basket.item}</p>
-                  <p>{basket.summary}</p>
+                  <p>
+                    {props.language === "en" ? basket.item : basket.item_es}
+                  </p>
+                  <p>
+                    {props.language === "en"
+                      ? basket.summary
+                      : basket.summary_es}
+                  </p>
                   <p>
                     {CurrencyFormatter.format(basket.price, {
                       currency: "USD",
@@ -89,6 +99,7 @@ const SignUp = (props) => {
 const mapStateToProps = (state) => {
   return {
     selectedProduct: state.customer.selectedProduct,
+    language: state.customer.language,
   };
 };
 

@@ -12,6 +12,8 @@ exports.up = function (knex) {
 
     tbl.string("password", 255).notNullable();
 
+    tbl.string("stripe_id", 255).notNullable().unique();
+
     tbl.string("phone", 11).notNullable();
 
     tbl.string("address", 255).notNullable();
@@ -23,6 +25,10 @@ exports.up = function (knex) {
     tbl.string("zip", 12).notNullable();
 
     tbl.string("order_notes", 255);
+
+    tbl.string("subscription_id");
+
+    tbl.boolean("currently_subscribed").notNullable();
   });
 };
 

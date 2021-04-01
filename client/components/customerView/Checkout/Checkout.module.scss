@@ -27,3 +27,20 @@
 .checkout-cust-info-right {
   width: 48%;
 }
+
+.checkout-error-msg {
+  width: 25%;
+  height: 5vh;
+  background: #d04746;
+  position: fixed;
+  bottom: 3%;
+  left: 37.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: #fff;
+    font-size: 2rem;
+  }
+}

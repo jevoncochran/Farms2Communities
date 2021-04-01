@@ -3,8 +3,9 @@ import { FiMapPin } from "react-icons/fi";
 import { FaPhone, FaFacebook, FaTwitter, FaPinterest } from "react-icons/fa";
 import { HiOfficeBuilding } from "react-icons/hi";
 import { GrInstagram, GrYoutube } from "react-icons/gr";
+import { connect } from "react-redux";
 
-const ContactInfo = () => {
+const ContactInfo = (props) => {
   return (
     <div className={styles["contact-info"]}>
       <div className={styles["info-container"]}>
@@ -12,7 +13,11 @@ const ContactInfo = () => {
           <FiMapPin />
         </div>
         <div className={styles["info-cont-text-div"]}>
-          <p className={styles["info-text-large"]}>FARMS to COMMUNITIES</p>
+          <p className={styles["info-text-large"]}>
+            {props.language === "en"
+              ? "FARMS to COMMUNITIES"
+              : "GRANJAS a COMUNIDADES"}
+          </p>
           <p className={styles["info-text"]}>PO Box 5556, Oakland CA 94605</p>
         </div>
       </div>
@@ -22,7 +27,9 @@ const ContactInfo = () => {
           <FaPhone />
         </div>
         <div className={styles["info-cont-text-div"]} style={{ height: "65%" }}>
-          <p className={styles["info-text-large"]}>QUICK CONTACT</p>
+          <p className={styles["info-text-large"]}>
+            {props.language === "en" ? "QUICK CONTACT" : "CONTACTO RÁPIDO"}
+          </p>
           <div>
             <p className={styles["info-text"]}>+1 (510) 621-0020</p>
             <p className={styles["info-text"]}>
@@ -37,10 +44,18 @@ const ContactInfo = () => {
           <HiOfficeBuilding />
         </div>
         <div className={styles["info-cont-text-div"]} style={{ height: "65%" }}>
-          <p className={styles["info-text-large"]}>OFFICE HOURS</p>
+          <p className={styles["info-text-large"]}>
+            {props.language === "en" ? "OFFICE HOURS" : "HORAS DE OFICINA"}
+          </p>
           <div>
-            <p className={styles["info-text"]}>2pm – 6pm</p>
-            <p className={styles["info-text"]}>(Monday – Friday) </p>
+            <p className={styles["info-text"]}>
+              {props.language === "en" ? "2pm – 6pm" : "14h - 18h"}
+            </p>
+            <p className={styles["info-text"]}>
+              {props.language === "en"
+                ? "(Monday – Friday)"
+                : "(lunes a viernes)"}{" "}
+            </p>
           </div>
         </div>
       </div>
@@ -68,4 +83,10 @@ const ContactInfo = () => {
   );
 };
 
-export default ContactInfo;
+const mapStateToProps = (state) => {
+  return {
+    language: state.customer.language,
+  };
+};
+
+export default connect(mapStateToProps, {})(ContactInfo);

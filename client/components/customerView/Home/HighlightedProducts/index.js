@@ -25,6 +25,7 @@ const HighlightedProducts = (props) => {
   useEffect(() => {
     if (props.selectedProduct) {
       router.push(`/signup/${props.selectedProduct.route}`);
+      console.log("This is from the Highlighted Products component");
     }
   }, [props.selectedProduct]);
 
