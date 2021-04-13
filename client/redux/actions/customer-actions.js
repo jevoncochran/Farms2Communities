@@ -24,7 +24,7 @@ export const setSelectedProduct = (product) => (dispatch) => {
   dispatch({ type: SET_PRODUCT_SUCCESS, payload: product });
 };
 
-export const finalizeOrder = (customer, order, paymentInfo) => (dispatch) => {
+export const finalizeOrder = (customer, order, paymentInfo, subscription) => (dispatch) => {
   dispatch({ type: FINALIZE_ORDER_START });
   axios
     .post(`${apiRoot}/stripe/customer`, {
@@ -41,12 +41,6 @@ export const finalizeOrder = (customer, order, paymentInfo) => (dispatch) => {
           postal_code: customer.zip,
         },
       },
-      // address: {
-      // line1: customer.address,
-      // city: customer.city,
-      // state: customer.state,
-      // postal_code: customer.zip,
-      // },
     })
     .then((res) => {
       console.log(res);
@@ -54,6 +48,7 @@ export const finalizeOrder = (customer, order, paymentInfo) => (dispatch) => {
         .post(`${apiRoot}/stripe/subscription`, {
           stripeCustomerId: res.data.id,
           amount: paymentInfo.amount,
+          stripePriceId: subscription
         })
         .then((res) => {
           console.log(res.data);
@@ -91,70 +86,6 @@ export const finalizeOrder = (customer, order, paymentInfo) => (dispatch) => {
       console.log(err);
     });
 };
-
-// export const finalizeOrder = (customer, order, paymentInfo) => (dispatch) => {
-//   dispatch({ type: FINALIZE_ORDER_START });
-//   // Create customer and secure payment
-//   axios
-//     .post(`${apiRoot}/stripe/customer`, {
-//       stripeId: customer.stripe_id,
-//       name: `${customer.first_name} ${customer.last_name}`,
-//       email: customer.email,
-//       paymentMethodId: paymentInfo.paymentMethodId,
-//     })
-//     .then((res) => {
-//       console.log(res);
-//       axios
-//         .post(`${apiRoot}/stripe/intent`, {
-//           stripeCustomerId: res.data.id,
-//           paymentMethodId: paymentInfo.paymentMethodId,
-//         })
-//         .then((res) => {
-//           console.log(res.data);
-//           axios
-//             .post(`${apiRoot}/stripe/subscription`, {
-//               stripeCustomerId: res.data.customer,
-//               paymentMethodId: paymentInfo.paymentMethodId,
-//               amount: paymentInfo.amount,
-//             })
-//             .then((res) => {
-//               console.log(res.data);
-//               // axios
-//               //   .post(`${apiRoot}/customers`, {
-//               //     ...customer,
-//               //     stripe_id: res.data.customer,
-//               //   })
-//               //   .then((res) => {
-//               //     console.log(res.data);
-//               //     axios
-//               //       .post(`${apiRoot}/orders`, {
-//               //         ...order,
-//               //         customer_id: res.data.id,
-//               //       })
-//               //       .then((res) => {
-//               //         console.log(res.data);
-//               //         dispatch({ type: "FINALIZE_ORDER_SUCCESS" });
-//               //       })
-//               //       .catch((err) => {
-//               //         console.log(err);
-//               //       });
-//               //   })
-//               //   .catch((err) => {
-//               //     console.log(err);
-//               //   });
-//             })
-//             .catch((err) => {
-//               console.log(err);
-//             });
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
 
 export const setProductQuantity = (quantity) => (dispatch) => {
   dispatch({ type: SET_PRODUCT_QUANTITY_START });

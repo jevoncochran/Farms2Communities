@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styles from "./PaymentForm.module.scss";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 const FlakeIdGen = require("flake-idgen"),
@@ -13,15 +14,21 @@ function PaymentForm(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (props.password !== props.reenteredPassword) {
+      props.setMessage({ status: "error", text: "Passwords do not match" });
+      displayMsg();
+      return;
+    }
+
     if (props.selectedProduct.id === 2) {
       if (!props.promoCode) {
-        props.setErrorMsg("Promo code is required");
-        displayErrMsg();
+        props.setMessage({ status: "error", text: "Promo code is required" });
+        displayMsg();
         return;
       } else {
         if (props.promoCode.toUpperCase() !== "FTC10") {
-          props.setErrorMsg("Invalid promo code");
-          displayErrMsg();
+          props.setMessage({ status: "error", text: "Invalid promo code" });
+          displayMsg();
           return;
         }
       }
@@ -66,55 +73,13 @@ function PaymentForm(props) {
               props.selectedProduct.quantity *
               100,
             paymentMethodId: id,
-          }
+          },
+          props.selectedProduct.stripe_price_id
         );
       } catch (error) {
         console.log("Error", error);
       }
     }
-
-    // let stripeCustomer = {
-    //   id: props.customer.stripe_id,
-    //   name: `${props.customer.first_name} ${props.customer.last_name}`,
-    //   email: props.customer.email,
-    // };
-
-    // stripe.customers.create(stripeCustomer, function (err, newCustomer) {
-    //   if (!err) {
-    //     res.status(201).json(newCustomer);
-    //     props.finalizeOrder(props.customer, {
-    //       product_id: props.selectedProduct.id,
-    //       quantity: props.selectedProduct.quantity,
-    //       total: props.selectedProduct.price * props.selectedProduct.quantity,
-    //       date: generateDate(),
-    //     });
-    //   } else {
-    //     console.log(`Error:`, err);
-    //     res.status(400).json({ err });
-    //   }
-    // });
-
-    // const { error, paymentMethod } = await stripe.createPaymentMethod({
-    //   type: "card",
-    //   card: elements.getElement(CardElement),
-    // });
-
-    // if (!error) {
-    //   try {
-    //     const { id } = paymentMethod;
-    //     const response = await axios.post(`${apiRoot}/pay`, {
-    //       amount: props.amount * 100,
-    //       id,
-    //     });
-    //     if (response.data.success) {
-    //       console.log("Successful payment!");
-    //     }
-    //   } catch (error) {
-    //     console.log("Error", error);
-    //   }
-    // } else {
-    //   console.log(error.message);
-    // }
   };
 
   const generateDate = () => {
@@ -131,10 +96,18 @@ function PaymentForm(props) {
     return month + "/" + day + "/" + year;
   };
 
-  const displayErrMsg = () => {
-    props.setDisplayErrMsg(true);
-    setTimeout(() => props.setDisplayErrMsg(false), 3000);
+  const displayMsg = () => {
+    props.setDisplayMsg(true);
+    setTimeout(() => props.setDisplayMsg(false), 3000);
   };
+
+  useEffect(() => {
+    if (props.paymentSuccess) {
+      props.setMessage({ status: "success", text: "Payment was successful!" });
+      displayMsg();
+      console.log("Payment success useEffect ran!");
+    }
+  }, [props.paymentSuccess]);
 
   return (
     <div className={styles.pf}>
@@ -152,6 +125,7 @@ function PaymentForm(props) {
 const mapStateToProps = (state) => {
   return {
     selectedProduct: state.customer.selectedProduct,
+    paymentSuccess: state.customer.payment_success,
   };
 };
 

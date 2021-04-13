@@ -23,11 +23,12 @@ const Checkout = () => {
   });
 
   const [promoCode, setPromoCode] = useState(null);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [reenteredPassword, setReenteredPassword] = useState("");
+  const [message, setMessage] = useState({ status: "", text: "" });
 
   const [addressLine2, setAddressLine2] = useState("");
 
-  const [displayErrMsg, setDisplayErrMsg] = useState(false);
+  const [displayMsg, setDisplayMsg] = useState(false);
 
   useEffect(() => {
     console.log("customer: ", customer);
@@ -38,8 +39,8 @@ const Checkout = () => {
   }, [addressLine2]);
 
   useEffect(() => {
-    console.log("errorMsg: ", errorMsg);
-  }, [errorMsg]);
+    console.log("message: ", message);
+  }, [message]);
 
   return (
     <Layout>
@@ -69,17 +70,23 @@ const Checkout = () => {
                 setCustomer={setCustomer}
                 addressLine2={addressLine2}
                 promoCode={promoCode}
-                // errorMsg={errorMsg}
-                setErrorMsg={setErrorMsg}
-                setDisplayErrMsg={setDisplayErrMsg}
+                setMessage={setMessage}
+                setDisplayMsg={setDisplayMsg}
+                password={customer.password}
+                reenteredPassword={reenteredPassword}
               />
             </div>
           </div>
         </div>
       </div>
-      {displayErrMsg && (
+      {displayMsg && message.status === "success" && (
+        <div className={styles["checkout-success-msg"]}>
+          <p>{message.text}</p>
+        </div>
+      )}
+      {displayMsg && message.status === "error" && (
         <div className={styles["checkout-error-msg"]}>
-          <p>{errorMsg}</p>
+          <p>{message.text}</p>
         </div>
       )}
     </Layout>
