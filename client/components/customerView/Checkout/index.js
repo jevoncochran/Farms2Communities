@@ -42,6 +42,10 @@ const Checkout = () => {
     console.log("message: ", message);
   }, [message]);
 
+  useEffect(() => {
+    console.log("reenteredPassword: ", reenteredPassword);
+  }, [reenteredPassword]);
+
   return (
     <Layout>
       <div className={styles.checkout}>
@@ -58,6 +62,8 @@ const Checkout = () => {
               setCustomer={setCustomer}
               addressLine2={addressLine2}
               setAddressLine2={setAddressLine2}
+              reenteredPassword={reenteredPassword}
+              setReenteredPassword={setReenteredPassword}
             />
             <div className={styles["checkout-cust-info-right"]}>
               <SupplementalInfo

@@ -23,6 +23,7 @@ const CustomerForm = (props) => {
       }
     }
   };
+
   return (
     <div className={styles.cf}>
       <div className={styles["cf-header"]}>
@@ -117,7 +118,12 @@ const CustomerForm = (props) => {
           <label htmlFor="password_confirm">
             {props.language === "en" ? "Confirm Password" : "Confirmar seña"}
           </label>
-          <input name="password_confirm" type="password" />
+          <input
+            name="password_confirm"
+            type="password"
+            value={props.reenteredPassword}
+            onChange={(e) => props.setReenteredPassword(e.target.value)}
+          />
         </div>
       </form>
     </div>
