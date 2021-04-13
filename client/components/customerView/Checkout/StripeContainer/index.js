@@ -16,8 +16,10 @@ export default function StripeContainer(props) {
         addressLine2={props.addressLine2}
         promoCode={props.promoCode}
         // errorMsg={props.errorMsg}
-        setErrorMsg={props.setErrorMsg}
-        setDisplayErrMsg={props.setDisplayErrMsg}
+        setMessage={props.setMessage}
+        setDisplayMsg={props.setDisplayMsg}
+        password={props.password}
+        reenteredPassword={props.reenteredPassword}
       />
     </Elements>
   );

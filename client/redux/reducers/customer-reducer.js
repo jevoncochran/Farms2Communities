@@ -9,6 +9,8 @@ import {
   CLEAR_SELECTED_PRODUCT_SUCCESS,
   CUSTOMER_LOGIN_START,
   CUSTOMER_LOGIN_SUCCESS,
+  FINALIZE_ORDER_START,
+  FINALIZE_ORDER_SUCCESS,
 } from "../actions";
 
 const initialState = {
@@ -77,6 +79,17 @@ export const customer = (state = initialState, action) => {
         isLoading: false,
         account: action.payload.account,
         loggedIn: true,
+      };
+    case FINALIZE_ORDER_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FINALIZE_ORDER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        payment_success: true,
       };
     default:
       return state;
