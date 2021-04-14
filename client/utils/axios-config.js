@@ -1,1 +1,1 @@
-export const apiRoot = "http://localhost:5000/api";
+export const apiRoot = "https://farmstocommunities.herokuapp.com/api";
