@@ -24,31 +24,42 @@ export const setSelectedProduct = (product) => (dispatch) => {
   dispatch({ type: SET_PRODUCT_SUCCESS, payload: product });
 };
 
-export const finalizeOrder = (customer, order, paymentInfo, subscription) => (dispatch) => {
+export const finalizeOrder = (customer, order, paymentInfo, subscription) => (
+  dispatch
+) => {
   dispatch({ type: FINALIZE_ORDER_START });
   axios
-    .post(`${apiRoot}/stripe/customer`, {
-      stripeId: customer.stripe_id,
-      name: `${customer.first_name} ${customer.last_name}`,
-      email: customer.email,
-      paymentMethodId: paymentInfo.paymentMethodId,
-      shipping: {
+    .post(
+      `${apiRoot}/stripe/customer`,
+      {
+        stripeId: customer.stripe_id,
         name: `${customer.first_name} ${customer.last_name}`,
-        address: {
-          line1: customer.address,
-          city: customer.city,
-          state: customer.state,
-          postal_code: customer.zip,
+        email: customer.email,
+        paymentMethodId: paymentInfo.paymentMethodId,
+        shipping: {
+          name: `${customer.first_name} ${customer.last_name}`,
+          address: {
+            line1: customer.address,
+            city: customer.city,
+            state: customer.state,
+            postal_code: customer.zip,
+          },
         },
       },
-    })
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      }
+    )
     .then((res) => {
       console.log(res);
       axios
         .post(`${apiRoot}/stripe/subscription`, {
           stripeCustomerId: res.data.id,
           amount: paymentInfo.amount,
-          stripePriceId: subscription
+          stripePriceId: subscription,
         })
         .then((res) => {
           console.log(res.data);
