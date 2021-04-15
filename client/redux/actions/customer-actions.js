@@ -45,13 +45,13 @@ export const finalizeOrder = (customer, order, paymentInfo, subscription) => (
             postal_code: customer.zip,
           },
         },
-      },
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        },
       }
+      // {
+      //   headers: {
+      //     "Access-Control-Allow-Origin": "*",
+      //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      //   },
+      // }
     )
     .then((res) => {
       console.log(res);
