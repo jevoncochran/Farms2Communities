@@ -6,6 +6,7 @@ import CurrencyFormatter from "currencyformatter.js";
 import axios from "axios";
 import { apiRoot } from "../../../utils/axios-config";
 import { connect } from "react-redux";
+import { cancelSubscription } from "../../../redux/actions/index";
 
 const CustomerDash = (props) => {
   const [quantity, setQuantity] = useState(1);
@@ -141,7 +142,11 @@ const CustomerDash = (props) => {
                   </button>
                   <button
                     className={styles["cd-subscription-btn"]}
-                    onClick={null}
+                    onClick={() =>
+                      props.cancelSubscription(
+                        props.customerAccount.subscriptionId
+                      )
+                    }
                   >
                     Cancel subscription
                   </button>
@@ -213,4 +218,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(CustomerDash);
+export default connect(mapStateToProps, { cancelSubscription })(CustomerDash);

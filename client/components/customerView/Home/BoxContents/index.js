@@ -16,11 +16,11 @@ const BoxContents = (props) => {
         <p className={styles["box-contents-text-large"]}>
           {text[props.language].headline}
         </p>
-        <p className={styles["box-contents-text"]}>{text[props.language].p1}</p>
+        <p className={styles["box-contents-description"]}>{text[props.language].p1}</p>
         <p className={styles["box-contents-text"]}>{text[props.language].p2}</p>
         <Grid container>
           {produce.map((ele) => (
-            <Grid key={ele} item xs={3}>
+            <Grid key={ele} item xs={4} sm={3}>
               <p className={styles["box-contents-contents"]}>
                 {ele[props.language]}
               </p>

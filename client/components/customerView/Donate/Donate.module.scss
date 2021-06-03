@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .donate {
   height: 90vh;
 }
@@ -17,7 +19,7 @@
 }
 
 .donate-content {
-  height: 70vh;
+  // height: 70vh;
   display: flex;
   justify-content: space-between;
   padding: 4% 14%;
@@ -52,8 +54,43 @@
 
 .donate-text-large {
   font-size: 2.5rem;
+  margin-bottom: 24px;
 }
 
 .donate-text {
   font-size: 2rem;
+}
+
+@media (max-width: $mobile) {
+  .donate-content {
+    flex-direction: column;
+    padding: 5%;
+
+    img {
+      display: none;
+    }
+  }
+
+  .donate-form {
+    width: 100%;
+
+    input,
+    select,
+    button {
+      width: 100%;
+    }
+  }
+
+  .donate-text-large {
+    // margin-bottom: 124px;
+  }
+
+  .donate-text {
+    margin-right: 0;
+    margin-bottom: 24px;
+  }
+
+  .donation-chosen-amount-div {
+    
+  }
 }

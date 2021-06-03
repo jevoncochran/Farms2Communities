@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .pitch {
   height: 70vh;
   background-size: cover;
@@ -50,4 +52,30 @@
   //   height: auto !important;
   //   align-self: center;
   border-radius: 8px;
+}
+
+@media (max-width: $mobile) {
+  .pitch {
+    padding: 0;
+  }
+
+  .pitch-text-cont {
+    width: 100%;
+  }
+
+  .pitch-text-large {
+    text-align: center;
+  }
+
+  .pitch-text-btn {
+    width: 35%;
+  }
+
+  .pitch-img-cont {
+    flex-direction: column;
+  }
+
+  .pitch-img {
+    border-radius: 0;
+  }
 }

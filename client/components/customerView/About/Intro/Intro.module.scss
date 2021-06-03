@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .intro {
   display: flex;
   padding: 4% 14%;
@@ -28,4 +30,34 @@
   width: 100%;
   border-radius: 8px;
   margin-bottom: 4%;
+}
+
+.intro-images-img-mobile {
+  display: none;
+}
+
+@media (max-width: $mobile) {
+  .intro {
+    padding: 0;
+  }
+
+  .intro-text {
+    width: 100%;
+    margin-right: 0;
+
+    h2,
+    p {
+      text-align: center;
+      padding: 0 5%;
+    }
+  }
+
+  .intro-images {
+    display: none;
+  }
+
+  .intro-images-img-mobile {
+    display: flex;
+    width: 100%;
+  }
 }

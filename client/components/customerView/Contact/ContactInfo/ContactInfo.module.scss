@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .contact-info {
   height: 100%;
   width: 50%;
@@ -65,4 +67,11 @@
 .contact-info-social-icon {
   font-size: 5rem;
   color: #fc7523;
+}
+
+@media (max-width: $mobile) {
+  .contact-info {
+    width: 100%;
+    border-radius: 0;
+  }
 }

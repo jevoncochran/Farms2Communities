@@ -1,5 +1,7 @@
+$mobile: 500px;
+
 .hp {
-  height: 70vh;
+  // height: 70vh;
   display: flex;
   justify-content: space-between;
   padding: 4% 14%;
@@ -7,16 +9,14 @@
 
 .hp-product-cont {
   border: 5px solid #4a6d33;
-  height: 100%;
+  // height: 100%;
   width: 30%;
   border-radius: 8px;
   background: linear-gradient(
     rgba(255, 235, 25, 0.16) 0%,
     rgba(249, 166, 12, 0.69) 100%
   );
-  padding-top: 5%;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 5% 2.5%;
 }
 
 .hp-product-header-div {
@@ -52,4 +52,16 @@
   border: 1px solid #9dba60;
   background: linear-gradient(to top, #a8c76a, #d0e0a5);
   box-shadow: inset 0 1px 0 #fff, 0 5px 0 #54770f, 1px 7px 7px 3px;
+}
+
+@media (max-width: $mobile) {
+  .hp {
+    flex-direction: column;
+    // height: 140vh;
+  }
+
+  .hp-product-cont {
+    width: 100%;
+    margin-bottom: 12px;
+  }
 }

@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .ss {
   height: 40vh;
   background: #59854d;
@@ -19,5 +21,11 @@
   span {
     font-size: 2rem;
     font-weight: 700;
+  }
+}
+
+@media (max-width: 500px) {
+  .ss {
+    height: 80vh;
   }
 }

@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .nav {
   // border: 1px dashed black;
   height: 10vh;
@@ -49,5 +51,28 @@
 
   p {
     font-size: 1.5rem;
+  }
+}
+
+.mobile-menu-icon {
+  display: none;
+  font-size: 4rem;
+}
+
+@media (max-width: $mobile) {
+  .nav {
+    justify-content: space-between;
+  }
+
+  .nav-language-cont {
+    width: 40%;
+  }
+
+  .nav-pages-cont {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: flex;
   }
 }

@@ -14,7 +14,7 @@ const Sponsors = (props) => {
       <div className={styles["sponsor-logo-cont"]}>
         <Grid container>
           {sponsorLogos.map((logo) => (
-            <Grid item xs={2}>
+            <Grid item xs={4} sm={2}>
               <div className={styles["sponsor-logo-div"]} key={logo}>
                 <img
                   src={logo}

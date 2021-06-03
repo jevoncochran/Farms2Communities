@@ -12,11 +12,26 @@ const Intro = (props) => {
       <div className={styles["intro-text"]}>
         <h2>{text[props.language].h1}</h2>
         <p>{text[props.language].p1}</p>
+        <img
+          src={packedGreens}
+          alt="packed greens"
+          className={styles["intro-images-img-mobile"]}
+        />
         <h2>{text[props.language].h2}</h2>
         <p>{text[props.language].p2}</p>
         <p>{text[props.language].p3}</p>
+        <img
+          src={broccoliKid}
+          alt="kid picking broccoli"
+          className={styles["intro-images-img-mobile"]}
+        />
         <p>{text[props.language].p4}</p>
         <p>{text[props.language].p5}</p>
+        <img
+          src={tomatoKids}
+          alt="kids examining a juicy tomato"
+          className={styles["intro-images-img-mobile"]}
+        />
         <p>{text[props.language].p6}</p>
         <p>{text[props.language].p7}</p>
         <p>{text[props.language].p8}</p>
