@@ -1,0 +1,27 @@
+.mm {
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  z-index: 999;
+  position: absolute;
+  // display: flex;
+  // justify-content: flex-end;
+  padding: 4% 5%;
+}
+
+.mm-close-icon-cont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mm-close-icon {
+  color: #fff;
+  font-size: 50px;
+}
+
+.mm-nav-page {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}

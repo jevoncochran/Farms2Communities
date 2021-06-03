@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .box-contents {
   height: 65vh;
   background-size: cover;
@@ -22,6 +24,10 @@
 
 .box-contents-text-large {
   font-size: 3rem;
+}
+
+.box-contents-description {
+  font-size: 2rem;
 }
 
 .box-contents-text {
@@ -56,4 +62,28 @@
 .box-contents-img {
   width: 45%;
   border-radius: 8px;
+}
+
+@media (max-width: $mobile) {
+  .box-contents {
+    flex-direction: column;
+    padding: 4% 7%;
+  }
+
+  .box-contents-text-cont {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .box-contents-description {
+    display: none;
+  }
+
+  .box-contents-text-large {
+    text-align: center;
+  }
+
+  .box-contents-img {
+    display: none;
+  }
 }

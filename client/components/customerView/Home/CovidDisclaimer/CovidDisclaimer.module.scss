@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .cd {
   height: 65vh;
   padding: 4% 14%;
@@ -26,4 +28,31 @@
 
 .cd-img {
   height: 100%;
+}
+
+@media (max-width: $mobile) {
+  .cd {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .cd-text-cont {
+    width: 100%;
+    padding: 4% 7%;
+    height: 60vh;
+  }
+
+  .cd-text-header {
+    margin-bottom: 12px;
+  }
+
+  .cd-text {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .cd-img {
+    width: 100%;
+    height: auto;
+  }
 }

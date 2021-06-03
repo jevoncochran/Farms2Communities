@@ -55,18 +55,19 @@ const Donate = (props) => {
             <form className={styles["donate-form"]}>
               <p
                 className={styles["donate-text-large"]}
-                style={{ marginBottom: "6%" }}
+                // style={{ marginBottom: "6%" }}
               >
                 {props.language === "en"
                   ? "Donate To Families in Need"
                   : "Done para familias necesitadas"}
               </p>
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "6%",
-                }}
+                className={styles["donations-preset-div"]}
+                // style={{
+                //   display: "flex",
+                //   alignItems: "center",
+                //   marginBottom: "6%",
+                // }}
               >
                 <label
                   htmlFor="preset_donations"
@@ -96,6 +97,7 @@ const Donate = (props) => {
               </div>
               {chooseAmount && (
                 <div
+                  className={styles["donation-chosen-amount-div"]}
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -105,7 +107,7 @@ const Donate = (props) => {
                   <label
                     htmlFor="chosen_donation"
                     className={styles["donate-text"]}
-                    style={{ marginBottom: "1%" }}
+                    // style={{ marginBottom: "1%" }}
                   >
                     {props.language === "en"
                       ? "Choose your own donation amount"

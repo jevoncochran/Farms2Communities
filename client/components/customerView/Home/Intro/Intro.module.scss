@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .intro {
   height: 90vh;
   // top: 10vh;
@@ -6,6 +8,7 @@
 
 .intro-img-large {
   height: 40vh;
+  width: 100%;
   background-size: cover;
   background-position: 0% 50%;
   display: flex;
@@ -50,4 +53,42 @@
 
 .intro-bottom-img {
   border-radius: 6px;
+}
+
+@media (max-width: $mobile) {
+  .intro {
+    // border: 1px dashed black;
+    height: 160vh;
+  }
+  .intro-img-large {
+  }
+
+  .intro-logo-cont {
+    height: 40%;
+    width: 60%;
+  }
+
+  .intro-logo-img {
+    width: 100%;
+  }
+
+  .intro-bottom {
+    // border: 1px dashed black;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
+
+    h2 {
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+  }
+
+  .intro-bottom-text {
+    width: 100%;
+    padding: 4% 7%;
+  }
 }

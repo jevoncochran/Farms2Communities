@@ -13,7 +13,11 @@ const Intro = (props) => {
         style={{ backgroundImage: `url(${vegBasket})` }}
       >
         <div className={styles["intro-logo-cont"]}>
-          <img src={ftcLogo} alt="Farms to Communities logo" />
+          <img
+            src={ftcLogo}
+            alt="Farms to Communities logo"
+            className={styles["intro-logo-img"]}
+          />
         </div>
       </div>
       <div className={styles["intro-bottom"]}>

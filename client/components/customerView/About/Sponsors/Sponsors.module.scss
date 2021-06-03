@@ -1,6 +1,8 @@
+$mobile: 500px;
+
 .sponsors {
   //   border: 1px dashed black;
-  height: 60vh;
+  // height: 60vh;
   padding: 4% 14%;
 }
 
@@ -24,9 +26,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 14px;
 }
 
 .sponsor-logo {
   //   border: 1px dashed black;
   width: 100%;
+}
+
+@media (max-width: $mobile) {
+  .sponsors {
+    padding: 0;
+  }
+
+  .sponsor-logo-div {
+    width: 100%;
+  }
 }

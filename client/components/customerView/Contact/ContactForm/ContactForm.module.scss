@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .contact-form {
   //   border: 1px dashed black;
   width: 50%;
@@ -37,8 +39,31 @@
   height: 15vh;
 }
 
+.contact-form-btn-div {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .contact-form-btn {
   height: 7vh;
   width: 40%;
   font-size: 2rem;
+}
+
+@media (max-width: $mobile) {
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-form-header {
+    text-align: center;
+  }
+
+  .contact-form-desc {
+    text-align: center;
+  }
+
+  .contact-form-btn-div {
+    justify-content: center;
+  }
 }

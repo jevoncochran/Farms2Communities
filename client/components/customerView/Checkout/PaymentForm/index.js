@@ -6,8 +6,11 @@ const FlakeIdGen = require("flake-idgen"),
   generator = new FlakeIdGen();
 import { connect } from "react-redux";
 import { finalizeOrder } from "../../../../redux/actions";
+import { useRouter } from "next/router";
 
 function PaymentForm(props) {
+  const router = useRouter();
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -106,6 +109,7 @@ function PaymentForm(props) {
       props.setMessage({ status: "success", text: "Payment was successful!" });
       displayMsg();
       console.log("Payment success useEffect ran!");
+      setTimeout(() => router.push("/dashboard"));
     }
   }, [props.paymentSuccess]);
 

@@ -53,9 +53,11 @@ const ContactForm = (props) => {
             className={styles["contact-form-input-large"]}
           />
         </div>
-        <button className={styles["contact-form-btn"]}>
-          {props.language === "en" ? "SEND MESSAGE" : "ENVIAR MENSAJE"}
-        </button>
+        <div className={styles["contact-form-btn-div"]}>
+          <button className={styles["contact-form-btn"]}>
+            {props.language === "en" ? "SEND MESSAGE" : "ENVIAR MENSAJE"}
+          </button>
+        </div>
       </form>
     </div>
   );

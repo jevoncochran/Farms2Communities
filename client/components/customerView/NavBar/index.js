@@ -3,7 +3,12 @@ import usFlag from "../../../public/assets/images/nav/united-states.png";
 import mexicoFlag from "../../../public/assets/images/nav/mexico.png";
 import Link from "next/link";
 import { connect } from "react-redux";
-import { setLanguage } from "../../../redux/actions";
+import {
+  setLanguage,
+  openMobileNav,
+  closeMobileNav,
+} from "../../../redux/actions";
+import { HiOutlineMenu } from "react-icons/hi";
 
 const NavBar = (props) => {
   return (
@@ -53,6 +58,9 @@ const NavBar = (props) => {
           <p>ES</p>
         </div>
       </div>
+      <div className={styles["mobile-menu-icon"]} onClick={props.openMobileNav}>
+        <HiOutlineMenu />
+      </div>
     </div>
   );
 };
@@ -63,4 +71,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setLanguage })(NavBar);
+export default connect(mapStateToProps, {
+  setLanguage,
+  openMobileNav,
+  closeMobileNav,
+})(NavBar);

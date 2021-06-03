@@ -11,12 +11,15 @@ import {
   CUSTOMER_LOGIN_SUCCESS,
   FINALIZE_ORDER_START,
   FINALIZE_ORDER_SUCCESS,
+  OPEN_MOBILE_NAV,
+  CLOSE_MOBILE_NAV,
 } from "../actions";
 
 const initialState = {
   language: "en",
   isLoading: false,
   selectedProduct: null,
+  mobileNavVisible: false,
 };
 
 export const customer = (state = initialState, action) => {
@@ -90,6 +93,17 @@ export const customer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         payment_success: true,
+        account: action.payload,
+      };
+    case OPEN_MOBILE_NAV:
+      return {
+        ...state,
+        mobileNavVisible: true,
+      };
+    case CLOSE_MOBILE_NAV:
+      return {
+        ...state,
+        mobileNavVisible: false,
       };
     default:
       return state;

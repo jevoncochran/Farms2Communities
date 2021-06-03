@@ -1,3 +1,5 @@
+$mobile: 500px;
+
 .sp {
   height: 90vh;
 }
@@ -83,4 +85,35 @@
   border: none;
   border-radius: 6px;
   color: #787878;
+}
+
+@media (max-width: $mobile) {
+  .sp-header {
+    text-align: center;
+  }
+
+  .sp-content {
+    flex-direction: column;
+  }
+
+  .sp-img {
+    width: 100%;
+  }
+
+  .sp-text-div {
+    width: 100%;
+  }
+
+  .sp-btn-cont {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sp-quantity-cont {
+    margin-bottom: 24px;
+  }
+
+  .sp-signup-btn {
+    width: 70%;
+  }
 }
