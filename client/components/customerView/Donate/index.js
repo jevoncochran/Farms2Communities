@@ -69,15 +69,15 @@ const Donate = (props) => {
                 //   marginBottom: "6%",
                 // }}
               >
-                <label
-                  htmlFor="preset_donations"
+                <p
+                  // htmlFor="preset_donations"
                   className={styles["donate-text"]}
                   style={{ marginRight: "20%" }}
                 >
                   {props.language === "en"
                     ? "Preset Donations"
                     : "Donaciones preestablecidas"}
-                </label>
+                </p>
                 <select name="preset_donations" onChange={selectChangeHandler}>
                   <option>
                     {props.language === "en"
@@ -102,17 +102,18 @@ const Donate = (props) => {
                     display: "flex",
                     flexDirection: "column",
                     marginBottom: "6%",
+                    // border: "1px dashed black",
                   }}
                 >
-                  <label
+                  <p
                     htmlFor="chosen_donation"
                     className={styles["donate-text"]}
-                    // style={{ marginBottom: "1%" }}
+                    style={{ marginBottom: "1%" }}
                   >
                     {props.language === "en"
                       ? "Choose your own donation amount"
                       : "Escoge otra cantidad"}
-                  </label>
+                  </p>
                   <input
                     type="text"
                     name="chosen_donation"
