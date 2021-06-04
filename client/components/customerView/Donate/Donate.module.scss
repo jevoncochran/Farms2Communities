@@ -1,7 +1,7 @@
 $mobile: 500px;
 
 .donate {
-  height: 90vh;
+  // height: 90vh;
 }
 
 .donate-header {
@@ -61,6 +61,22 @@ $mobile: 500px;
   font-size: 2rem;
 }
 
+.donations-preset-div {
+  // display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  p {
+    margin-bottom: 12px;
+  }
+}
+
+.donation-chosen-amount-div {
+  p {
+    margin-bottom: 12px;
+  }
+}
+
 @media (max-width: $mobile) {
   .donate-content {
     flex-direction: column;
@@ -79,6 +95,14 @@ $mobile: 500px;
     button {
       width: 100%;
     }
+
+    button {
+      border-radius: 0;
+    }
+
+    // p {
+    //   margin-bottom: 24px;
+    // }
   }
 
   .donate-text-large {
@@ -90,7 +114,14 @@ $mobile: 500px;
     margin-bottom: 24px;
   }
 
+  .donations-preset-div {
+    margin-bottom: 24px;
+
+    p {
+      margin-bottom: 12px;
+    }
+  }
+
   .donation-chosen-amount-div {
-    
   }
 }
