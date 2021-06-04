@@ -29,10 +29,12 @@ $mobile: 500px;
 @media (max-width: $mobile) {
   .stats {
     flex-direction: column;
-    height: 50vh;
+    height: auto;
+    padding: 5%;
   }
 
   .stats-impact-div {
     justify-content: start;
+    margin-bottom: 24px;
   }
 }

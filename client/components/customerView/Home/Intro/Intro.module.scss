@@ -1,7 +1,7 @@
 $mobile: 500px;
 
 .intro {
-  height: 90vh;
+  // height: 90vh;
   // top: 10vh;
   // position: relative;
 }
@@ -58,7 +58,9 @@ $mobile: 500px;
 @media (max-width: $mobile) {
   .intro {
     // border: 1px dashed black;
-    height: 160vh;
+    // height: 160vh;
+    padding: 0;
+    // padding-bottom: 5%;
   }
   .intro-img-large {
   }
@@ -75,7 +77,7 @@ $mobile: 500px;
   .intro-bottom {
     // border: 1px dashed black;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
     padding: 0;
 
     h2 {
@@ -89,6 +91,10 @@ $mobile: 500px;
 
   .intro-bottom-text {
     width: 100%;
-    padding: 4% 7%;
+    padding: 5%;
+  }
+
+  .intro-bottom-img {
+    border-radius: 0;
   }
 }
