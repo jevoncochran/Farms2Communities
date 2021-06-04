@@ -1,12 +1,16 @@
 $mobile: 500px;
 
 .ss {
-  height: 40vh;
+  // height: 40vh;
   background: #59854d;
   padding: 4% 14%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  p {
+    margin-bottom: 24px;
+  }
 }
 
 .ss-header {
@@ -26,6 +30,11 @@ $mobile: 500px;
 
 @media (max-width: 500px) {
   .ss {
-    height: 80vh;
+    // height: 80vh;
+    padding: 5%;
+
+    p {
+      text-align: center;
+    }
   }
 }

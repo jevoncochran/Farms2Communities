@@ -90,11 +90,20 @@ $mobile: 500px;
     margin-bottom: 24px;
   }
 
+  .box-contents-contents {
+    font-size: 16px;
+  }
+
   .box-contents-img {
     display: none;
   }
 
   .box-contents-text {
     margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .box-contents-btn {
+    font-size: 14px;
   }
 }
