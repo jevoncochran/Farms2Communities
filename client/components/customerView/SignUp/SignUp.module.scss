@@ -1,7 +1,7 @@
 $mobile: 500px;
 
 .signup {
-  height: 90vh;
+  // height: 90vh;
 }
 
 .signup-header {
@@ -20,7 +20,7 @@ $mobile: 500px;
 
 .signup-baskets-cont {
   //   border: 1px dashed black;
-  height: 70vh;
+  // height: 70vh;
   display: flex;
   justify-content: space-evenly;
   padding: 4% 14%;
@@ -60,5 +60,6 @@ $mobile: 500px;
 
   .basket-card {
     width: 100%;
+    margin-bottom: 24px;
   }
 }
