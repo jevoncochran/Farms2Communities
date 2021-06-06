@@ -53,6 +53,10 @@ $mobile: 500px;
     text-align: center;
   }
 
+  .signup-header-text {
+    font-size: 24px;
+  }
+
   .signup-baskets-cont {
     flex-direction: column;
     padding: 5%;
@@ -61,5 +65,9 @@ $mobile: 500px;
   .basket-card {
     width: 100%;
     margin-bottom: 24px;
+
+    p {
+      font-size: 20px;
+    }
   }
 }
