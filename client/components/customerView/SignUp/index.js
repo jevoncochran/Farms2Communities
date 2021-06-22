@@ -13,6 +13,7 @@ const SignUp = (props) => {
   const router = useRouter();
   const [baskets, setBaskets] = useState(null);
   const [filteredBaskets, setFilteredBaskets] = useState(null);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const en = props.language === "en";
 
@@ -21,6 +22,7 @@ const SignUp = (props) => {
   //   };
 
   const routeToSelectedProduct = async (product) => {
+    setInitialLoad(false);
     await props.setSelectedProduct(product);
     // router.push(`/signup/${props.selectedProduct.route}`);
   };
@@ -43,7 +45,7 @@ const SignUp = (props) => {
   }, [baskets]);
 
   useEffect(() => {
-    if (props.selectedProduct) {
+    if (props.selectedProduct && !initialLoad) {
       router.push(`/signup/${props.selectedProduct.route}`);
     }
   }, [props.selectedProduct]);

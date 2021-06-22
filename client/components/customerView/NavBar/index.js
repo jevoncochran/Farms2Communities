@@ -7,6 +7,7 @@ import {
   setLanguage,
   openMobileNav,
   closeMobileNav,
+  customerLogout,
 } from "../../../redux/actions";
 import { HiOutlineMenu } from "react-icons/hi";
 
@@ -38,7 +39,9 @@ const NavBar = (props) => {
         )}
         {props.loggedIn && (
           <Link href="/">
-            <p className={styles["nav-page"]}>Logout</p>
+            <p className={styles["nav-page"]} onClick={props.customerLogout}>
+              Logout
+            </p>
           </Link>
         )}
       </div>
@@ -75,4 +78,5 @@ export default connect(mapStateToProps, {
   setLanguage,
   openMobileNav,
   closeMobileNav,
+  customerLogout,
 })(NavBar);

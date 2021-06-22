@@ -31,9 +31,11 @@ const CustomerDash = (props) => {
   };
 
   useEffect(() => {
+    console.log("props.customerAccount.id: ", props.customerAccount.id);
     axios
       .get(`${apiRoot}/customers/${props.customerAccount.id}/subscription`)
       .then((res) => {
+        console.log("response: ", res.data);
         setSubscription(res.data);
         setQuantity(res.data.quantity);
       })

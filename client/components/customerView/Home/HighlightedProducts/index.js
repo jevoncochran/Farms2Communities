@@ -8,10 +8,18 @@ import { text } from "./text";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import { setSelectedProduct } from "../../../../redux/actions";
+import { route } from "next/dist/next-server/server/router";
 
 const HighlightedProducts = (props) => {
   const router = useRouter();
   const [baskets, setBaskets] = useState(null);
+  const [initialLoad, setInitialLoad] = useState(true);
+
+  const routeToSelectedProduct = async (product) => {
+    setInitialLoad(false);
+    await props.setSelectedProduct(product);
+    // router.push(`/signup/${props.selectedProduct.route}`);
+  };
 
   useEffect(() => {
     axios
@@ -23,7 +31,7 @@ const HighlightedProducts = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.selectedProduct) {
+    if (props.selectedProduct && !initialLoad) {
       router.push(`/signup/${props.selectedProduct.route}`);
       console.log("This is from the Highlighted Products component");
     }
@@ -47,7 +55,7 @@ const HighlightedProducts = (props) => {
         </div>
         <button
           className={styles["hp-product-btn"]}
-          onClick={() => props.setSelectedProduct(baskets[0])}
+          onClick={() => routeToSelectedProduct(baskets[0])}
         >
           {text[props.language].box1.btn}
         </button>
@@ -74,7 +82,7 @@ const HighlightedProducts = (props) => {
         </div>
         <button
           className={styles["hp-product-btn"]}
-          onClick={() => props.setSelectedProduct(baskets[1])}
+          onClick={() => routeToSelectedProduct(baskets[1])}
         >
           {text[props.language].box2.btn}
         </button>

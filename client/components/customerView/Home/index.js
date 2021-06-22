@@ -10,10 +10,10 @@ import { connect } from "react-redux";
 import { clearSelectedProduct } from "../../../redux/actions";
 
 const Home = (props) => {
-  useEffect(() => {
-    props.clearSelectedProduct();
-    console.log("This is from the parent (HOME) component");
-  }, []);
+  // useEffect(() => {
+  //   props.clearSelectedProduct();
+  //   console.log("This is from the parent (HOME) component");
+  // }, []);
 
   return (
     <Layout>

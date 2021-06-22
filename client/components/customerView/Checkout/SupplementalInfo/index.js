@@ -11,8 +11,8 @@ const SupplementalInfo = (props) => {
       <form>
         <div className={styles["si-header"]}>
           {props.language === "en"
-            ? "Additional Information"
-            : "Información adicional"}
+            ? "Special Instructions"
+            : "Instrucciones especiales"}
         </div>
         <div className={styles["si-input-div"]}>
           <label>
@@ -20,7 +20,12 @@ const SupplementalInfo = (props) => {
               ? "Order notes (optional)"
               : "Notas de la orden (opcional)"}
           </label>
-          <input name="note" type="text" />
+          <input
+            name="note"
+            type="text"
+            value={props.deliveryNotes}
+            onChange={(e) => props.setDeliveryNotes(e.target.value)}
+          />
         </div>
       </form>
       <form>
@@ -35,9 +40,9 @@ const SupplementalInfo = (props) => {
           value={props.promoCode}
           onChange={(e) => props.setPromoCode(e.target.value)}
         />
-        <button>
+        {/* <button>
           {props.langauge === "en" ? "APPLY COUPON" : "ACTIVAR CODIGO"}
-        </button>
+        </button> */}
       </form>
     </div>
   );

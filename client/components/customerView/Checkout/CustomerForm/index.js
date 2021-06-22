@@ -1,8 +1,29 @@
+import { useState, useEffect } from "react";
 import styles from "./CustomerForm.module.scss";
 import StateSelect from "../StateSelect";
 import { connect } from "react-redux";
 
 const CustomerForm = (props) => {
+  const [notificationData, setNotificationData] = useState({
+    first_name: "",
+    last_name: "",
+    subscription_type: props.productId === 1 ? "$35" : "$10",
+  });
+  const [initialLoad, setInitialLoad] = useState(true);
+  // const notificationDataKeys = ["first_name", "last_name", "subscription_type"];
+
+  let hiddenFormBtn = "";
+  useEffect(() => {
+    if (props.paymentSuccess) {
+      hiddenFormBtnClick();
+    }
+  }, [props.paymentSuccess]);
+
+  const hiddenFormBtnClick = () => {
+    console.log("hiddenFormBtn: ", hiddenFormBtn);
+    hiddenFormBtn.click();
+  };
+
   const inputChangeHandler = (e) => {
     if (
       e.target.name !== "address_line1" &&
@@ -12,6 +33,12 @@ const CustomerForm = (props) => {
         ...props.customer,
         [e.target.name]: e.target.value,
       });
+      if (notificationData.hasOwnProperty(e.target.name)) {
+        setNotificationData({
+          ...notificationData,
+          [e.target.name]: e.target.value,
+        });
+      }
     } else {
       if (e.target.name === "address_line1") {
         props.setCustomer({
@@ -23,6 +50,10 @@ const CustomerForm = (props) => {
       }
     }
   };
+
+  useEffect(() => {
+    console.log("notificationData: ", notificationData);
+  }, [notificationData]);
 
   return (
     <div className={styles.cf}>
@@ -126,6 +157,25 @@ const CustomerForm = (props) => {
           />
         </div>
       </form>
+
+      <form onSubmit={props.submitNotification} style={{ display: "none" }}>
+        <input
+          type="text"
+          name="first_name"
+          value={props.customer.first_name}
+        ></input>
+        <input
+          type="text"
+          name="last_name"
+          value={props.customer.last_name}
+        ></input>
+        <input
+          type="text"
+          name="subscription_type"
+          value={notificationData.subscription_type}
+        ></input>
+        <input type="submit" ref={(ref) => (hiddenFormBtn = ref)}></input>
+      </form>
     </div>
   );
 };
@@ -133,6 +183,8 @@ const CustomerForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     language: state.customer.language,
+    productId: state.customer.selectedProduct.id,
+    paymentSuccess: state.customer.payment_success,
   };
 };
 

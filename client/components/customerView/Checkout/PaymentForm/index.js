@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./PaymentForm.module.scss";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 const FlakeIdGen = require("flake-idgen"),
@@ -14,8 +14,16 @@ function PaymentForm(props) {
   const stripe = useStripe();
   const elements = useElements();
 
+  const [initialLoad, setInitialLoad] = useState(true);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!props.customer.email) {
+      props.setMessage({ status: "error", text: "Please enter your email" });
+      displayMsg();
+      return;
+    }
 
     if (props.password !== props.reenteredPassword) {
       props.setMessage({ status: "error", text: "Passwords do not match" });
@@ -62,13 +70,15 @@ function PaymentForm(props) {
       try {
         console.log(paymentMethod);
         const { id } = paymentMethod;
+        setInitialLoad(false);
         props.finalizeOrder(
           props.customer,
           {
             product_id: props.selectedProduct.id,
             quantity: props.selectedProduct.quantity,
             total: props.selectedProduct.price * props.selectedProduct.quantity,
-            date: generateDate(),
+            subscribed_on: generateDate(),
+            delivery_notes: props.deliveryNotes,
           },
           {
             amount:
@@ -105,9 +115,10 @@ function PaymentForm(props) {
   };
 
   useEffect(() => {
-    if (props.paymentSuccess) {
+    if (props.paymentSuccess && !initialLoad) {
       props.setMessage({ status: "success", text: "Payment was successful!" });
       displayMsg();
+      // props.hiddenFormBtnClick();
       console.log("Payment success useEffect ran!");
       setTimeout(() => router.push("/dashboard"));
     }

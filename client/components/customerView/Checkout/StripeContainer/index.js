@@ -25,6 +25,8 @@ export default function StripeContainer(props) {
         setDisplayMsg={props.setDisplayMsg}
         password={props.password}
         reenteredPassword={props.reenteredPassword}
+        deliveryNotes={props.deliveryNotes}
+        // hiddenFormBtnClick={props.hiddenFormBtnClick}
       />
     </Elements>
   );
