@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Checkout.module.scss";
 import Layout from "../Layout";
 import CustomerForm from "./CustomerForm";
@@ -7,6 +7,7 @@ import recipeBg from "../../../public/assets/images/home/recipe-bg-25.png";
 import RecapAndPayment from "./RecapAndPayment";
 import StripeContainer from "./StripeContainer";
 import { connect } from "react-redux";
+import emailjs from "emailjs-com";
 
 const Checkout = () => {
   const [customer, setCustomer] = useState({
@@ -21,7 +22,7 @@ const Checkout = () => {
     email: "",
     password: "",
   });
-
+  const [deliveryNotes, setDeliveryNotes] = useState("");
   const [promoCode, setPromoCode] = useState(null);
   const [reenteredPassword, setReenteredPassword] = useState("");
   const [message, setMessage] = useState({ status: "", text: "" });
@@ -29,6 +30,32 @@ const Checkout = () => {
   const [addressLine2, setAddressLine2] = useState("");
 
   const [displayMsg, setDisplayMsg] = useState(false);
+
+  // let hiddenFormBtn = "";
+  // const hiddenFormBtn = useRef(null);
+  // console.log("hiddenFormBtn not associated w click fn: ", hiddenFormBtn);
+
+  // const hiddenFormBtnClick = (e, referencedElement) => {
+  //   // e.preventDefault();
+  //   console.log("referencedElement: ", referencedElement);
+  //   referencedElement.click();
+  // };
+
+  const submitNotification = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_cv3upmr",
+        "template_85bjdlq",
+        e.target,
+        "user_gcST2H5scnEqWsdWxVu4s"
+      )
+      .then(
+        (result) => console.log(result.text),
+        (error) => console.log(error.text)
+      );
+    e.target.reset();
+  };
 
   useEffect(() => {
     console.log("customer: ", customer);
@@ -45,6 +72,10 @@ const Checkout = () => {
   useEffect(() => {
     console.log("reenteredPassword: ", reenteredPassword);
   }, [reenteredPassword]);
+
+  useEffect(() => {
+    console.log("deliveryNotes: ", deliveryNotes);
+  }, [deliveryNotes]);
 
   return (
     <Layout>
@@ -64,11 +95,15 @@ const Checkout = () => {
               setAddressLine2={setAddressLine2}
               reenteredPassword={reenteredPassword}
               setReenteredPassword={setReenteredPassword}
+              submitNotification={submitNotification}
+              // hiddenFormBtn={hiddenFormBtn}
             />
             <div className={styles["checkout-cust-info-right"]}>
               <SupplementalInfo
                 promoCode={promoCode}
                 setPromoCode={setPromoCode}
+                deliveryNotes={deliveryNotes}
+                setDeliveryNotes={setDeliveryNotes}
               />
               <RecapAndPayment />
               <StripeContainer
@@ -80,6 +115,8 @@ const Checkout = () => {
                 setDisplayMsg={setDisplayMsg}
                 password={customer.password}
                 reenteredPassword={reenteredPassword}
+                deliveryNotes={deliveryNotes}
+                // hiddenFormBtnClick={hiddenFormBtnClick}
               />
             </div>
           </div>

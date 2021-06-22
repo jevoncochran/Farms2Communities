@@ -1,5 +1,7 @@
+import AdminDash from "../components/adminView/AdminDash";
+
 const AdminPage = () => {
-  return <div></div>;
+  return <AdminDash />;
 };
 
 export default AdminPage;

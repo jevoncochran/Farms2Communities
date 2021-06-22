@@ -1,5 +1,6 @@
 import axios from "axios";
 import { apiRoot } from "../../utils/axios-config";
+// import { useRouter } from "next/router";
 
 export const SET_LANG_START = "SET_LANG_START";
 export const SET_LANG_SUCCESS = "SET_LANG_SUCCESS";
@@ -17,6 +18,7 @@ export const DELETE_SUBSCRIPTION_START = "DELETE_SUBSCRIPTION_START";
 export const DELETE_SUBSCRIPTION_SUCCESS = "DELETE_SUBSCRIPTION_SUCCESS";
 export const OPEN_MOBILE_NAV = "OPEN_MOBILE_NAV";
 export const CLOSE_MOBILE_NAV = "CLOSE_MOBILE_NAV";
+export const CUSTOMER_LOGOUT = "CUSTOMER_LOGOUT";
 
 export const setLanguage = (language) => (dispatch) => {
   dispatch({ type: SET_LANG_START });
@@ -24,8 +26,10 @@ export const setLanguage = (language) => (dispatch) => {
 };
 
 export const setSelectedProduct = (product) => (dispatch) => {
+  // const router = useRouter();
   dispatch({ type: SET_PRODUCT_START });
   dispatch({ type: SET_PRODUCT_SUCCESS, payload: product });
+  // router.push(`/signup/${product.route}`);
 };
 
 export const finalizeOrder =
@@ -88,10 +92,12 @@ export const finalizeOrder =
                 // let customerName = `${res.data.first_name} ${res.data.last_name}`;
                 // let customerEmail = res.data.email;
                 // let customerRole = "customer";
+                console.log("orderObj: ", order);
                 axios
-                  .post(`${apiRoot}/orders`, {
+                  .post(`${apiRoot}/subscriptions`, {
                     ...order,
                     customer_id: res.data.id,
+                    // subscription_id: subscriptionId,
                   })
                   .then((res) => {
                     console.log(res.data);
@@ -150,4 +156,8 @@ export const openMobileNav = () => (dispatch) => {
 
 export const closeMobileNav = () => (dispatch) => {
   dispatch({ type: CLOSE_MOBILE_NAV });
+};
+
+export const customerLogout = () => (dispatch) => {
+  dispatch({ type: CUSTOMER_LOGOUT });
 };

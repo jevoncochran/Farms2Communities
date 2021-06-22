@@ -13,6 +13,7 @@ import {
   FINALIZE_ORDER_SUCCESS,
   OPEN_MOBILE_NAV,
   CLOSE_MOBILE_NAV,
+  CUSTOMER_LOGOUT,
 } from "../actions";
 
 const initialState = {
@@ -94,6 +95,7 @@ export const customer = (state = initialState, action) => {
         isLoading: false,
         payment_success: true,
         account: action.payload,
+        loggedIn: true,
       };
     case OPEN_MOBILE_NAV:
       return {
@@ -105,6 +107,8 @@ export const customer = (state = initialState, action) => {
         ...state,
         mobileNavVisible: false,
       };
+    case CUSTOMER_LOGOUT:
+      return initialState;
     default:
       return state;
   }
