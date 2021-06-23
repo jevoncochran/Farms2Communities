@@ -7,7 +7,13 @@ import recipeBg from "../../../public/assets/images/home/recipe-bg-25.png";
 import RecapAndPayment from "./RecapAndPayment";
 import StripeContainer from "./StripeContainer";
 import { connect } from "react-redux";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
+import dynamic from "next/dynamic";
+
+const emailjs = dynamic(
+  () => import("emailjs-com").then((component) => component.emailjs),
+  { ssr: false }
+);
 
 const Checkout = () => {
   const [customer, setCustomer] = useState({
