@@ -8,12 +8,13 @@ import RecapAndPayment from "./RecapAndPayment";
 import StripeContainer from "./StripeContainer";
 import { connect } from "react-redux";
 // import emailjs from "emailjs-com";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
+const emailjs = require("emailjs-com");
 
-const emailjs = dynamic(
-  () => import("emailjs-com").then((component) => component.emailjs),
-  { ssr: false }
-);
+// const emailjs = dynamic(
+//   () => import("emailjs-com").then((component) => component.emailjs),
+//   { ssr: false }
+// );
 
 const Checkout = () => {
   const [customer, setCustomer] = useState({
@@ -36,16 +37,6 @@ const Checkout = () => {
   const [addressLine2, setAddressLine2] = useState("");
 
   const [displayMsg, setDisplayMsg] = useState(false);
-
-  // let hiddenFormBtn = "";
-  // const hiddenFormBtn = useRef(null);
-  // console.log("hiddenFormBtn not associated w click fn: ", hiddenFormBtn);
-
-  // const hiddenFormBtnClick = (e, referencedElement) => {
-  //   // e.preventDefault();
-  //   console.log("referencedElement: ", referencedElement);
-  //   referencedElement.click();
-  // };
 
   const submitNotification = (e) => {
     e.preventDefault();
